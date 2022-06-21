@@ -1,1 +1,2 @@
-Public Repo for GH Pages @k1m0na
+# Portfolio
+This is the portfolio of k1m0na, showcasing previous clients in a minimalistic yet interactive way.
