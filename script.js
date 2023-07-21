@@ -56,7 +56,7 @@ window.addEventListener('load', () => {
             deActivateRefreshBtn(card);
         }
 
-        function activateDrag(e){
+        function activateDrag(e) {
             e.preventDefault();
     
             window.addEventListener('mousemove', moveCardWithOffset, false);
@@ -67,6 +67,7 @@ window.addEventListener('load', () => {
         
             function moveCardWithOffset(e){
                 e.preventDefault();
+                console.log(e);
                 card.style.transform = `translate3d(${-parseInt( card.dataset.offsetX )}px,${-parseInt( card.dataset.offsetY )}px,0`;
                 card.dataset.offsetX  = cursorOnCardX - e.clientX;
                 card.dataset.offsetY  = cursorOnCardY - e.clientY;
