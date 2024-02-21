@@ -420,7 +420,7 @@ main #projects .cards .card .project-info {
   height: 28rem;
   border: 1px solid var(--accent-primary);
   border-radius: 3px;
-  background-color: #F6F7EA;
+  background-color: var(--bg-tertiary);
   object-fit: contain;
   transition: background-color var(--animation-duration);
   position: relative;
