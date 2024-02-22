@@ -6,6 +6,7 @@ window.addEventListener('load', () => {
           refreshCardsBtn = document.querySelector('.refresh-cards-btn'),
           refreshCardsArrow = document.querySelector('.refresh-cards-arrow'),
           refreshCardsText = document.querySelector('.refresh-cards-text'),
+          projectTitle = document.querySelector('#projects > .title'),
           projectImages = document.querySelectorAll('.project-info img'),
           projectInfoContainers = document.querySelectorAll('.project-info'),
           projectToggleBtns = document.querySelectorAll('.project-info-toggle'),
@@ -63,11 +64,15 @@ window.addEventListener('load', () => {
             window.addEventListener('mouseup', stopDrag);
         
             let cursorOnCardX = e.clientX + parseInt( card.dataset.offsetX ),
-                cursorOnCardY = e.clientY + parseInt( card.dataset.offsetY );
+                cursorOnCardY = e.clientY + parseInt( card.dataset.offsetY ),
+                projectTitleY = projectTitle.offsetTop + projectTitle.offsetHeight;
         
             function moveCardWithOffset(e){
                 e.preventDefault();
-                console.log(e);
+                
+                let grabbedCard = e.target.closest('.card');
+
+                console.log(grabbedCard.getClientRects());
                 card.style.transform = `translate3d(${-parseInt( card.dataset.offsetX )}px,${-parseInt( card.dataset.offsetY )}px,0`;
                 card.dataset.offsetX  = cursorOnCardX - e.clientX;
                 card.dataset.offsetY  = cursorOnCardY - e.clientY;

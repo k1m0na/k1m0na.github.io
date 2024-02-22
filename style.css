@@ -174,34 +174,34 @@ main {
     background-attachment: fixed;
     background-size: cover;
     background-position: bottom; }
-    main #projects .title {
+    main #projects > .title {
       padding: 17.5vh 0 0 6vw;
       z-index: 2;
       text-shadow: 0 0 1em var(--bg-footer); }
-      main #projects .title h2 {
+      main #projects > .title h2 {
         z-index: 2;
         margin: 0;
         font-family: "Sharp Grotesk", sans-serif;
         font-size: 2.75rem; }
-      main #projects .title svg {
+      main #projects > .title svg {
         padding-top: 0.5rem;
         height: 5rem; }
-      main #projects .title .refresh-cards {
+      main #projects > .title .refresh-cards {
         display: flex;
         justify-content: flex-start;
         align-items: center; }
-      main #projects .title .refresh-cards-arrow {
+      main #projects > .title .refresh-cards-arrow {
         cursor: pointer;
         padding: 0px;
         transition: stroke-width var(--half-anim-duration); }
-        main #projects .title .refresh-cards-arrow:hover {
+        main #projects > .title .refresh-cards-arrow:hover {
           stroke-width: 2px; }
-        main #projects .title .refresh-cards-arrow.rotating {
+        main #projects > .title .refresh-cards-arrow.rotating {
           transform-origin: bottom left;
           animation-name: rotation;
           animation-duration: var(--animation-duration);
           animation-timing-function: linear; }
-      main #projects .title .refresh-cards-text {
+      main #projects > .title .refresh-cards-text {
         transform: scale(0);
         transition: transform var(--animation-duration);
         transform-origin: left;
@@ -230,7 +230,8 @@ main {
           padding: 0.5rem 0 1rem;
           font-size: 1.5rem;
           font-family: "Sharp Grotesk", sans-serif;
-          text-transform: uppercase; }
+          text-transform: uppercase;
+          background: unset; }
           main #projects .cards .card .title * {
             margin: 0; }
           main #projects .cards .card .title svg {
