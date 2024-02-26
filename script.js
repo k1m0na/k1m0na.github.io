@@ -7,6 +7,7 @@ window.addEventListener('load', () => {
           refreshCardsArrow = document.querySelector('.refresh-cards-arrow'),
           refreshCardsText = document.querySelector('.refresh-cards-text'),
           projectTitle = document.querySelector('#projects > .title'),
+          projectTitleY = projectTitle.offsetTop + projectTitle.offsetHeight,
           projectImages = document.querySelectorAll('.project-info img'),
           projectInfoContainers = document.querySelectorAll('.project-info'),
           projectToggleBtns = document.querySelectorAll('.project-info-toggle'),
@@ -48,8 +49,10 @@ window.addEventListener('load', () => {
         cards.forEach( card => handleCardDrags(card)); 
     }
 
-    function handleCardDrags(card){
+    function handleCardDrags(card) {
         
+        const maxUpMovement = card.getBoundingClientRect().top + window.pageYOffset - projectTitleY;
+
         if (window.innerWidth > mobileBreakPoint) {
             card.addEventListener('mousedown', activateDrag, false);
         } else {
@@ -64,16 +67,14 @@ window.addEventListener('load', () => {
             window.addEventListener('mouseup', stopDrag);
         
             let cursorOnCardX = e.clientX + parseInt( card.dataset.offsetX ),
-                cursorOnCardY = e.clientY + parseInt( card.dataset.offsetY ),
-                projectTitleY = projectTitle.offsetTop + projectTitle.offsetHeight;
+                cursorOnCardY = e.clientY + parseInt( card.dataset.offsetY );
         
             function moveCardWithOffset(e){
                 e.preventDefault();
                 
                 let grabbedCard = e.target.closest('.card');
 
-                console.log(grabbedCard.getClientRects());
-                card.style.transform = `translate3d(${-parseInt( card.dataset.offsetX )}px,${-parseInt( card.dataset.offsetY )}px,0`;
+                card.style.transform = `translate3d(${-parseInt( card.dataset.offsetX )}px,${-parseInt( Math.min(card.dataset.offsetY, maxUpMovement) )}px,0`;
                 card.dataset.offsetX  = cursorOnCardX - e.clientX;
                 card.dataset.offsetY  = cursorOnCardY - e.clientY;
             }
