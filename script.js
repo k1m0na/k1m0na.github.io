@@ -1,5 +1,4 @@
-
-window.addEventListener('load', () => {    
+window.addEventListener('load', () => {
 
     const cards = document.querySelectorAll('.card'),
           closeBtns = document.querySelectorAll('.close-btn'),
