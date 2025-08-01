@@ -10,7 +10,7 @@
   --animation-duration:400ms;
   --accent-primary:#6D6062;
   --font-primary:#0D0D0D;
-  --bg-primary:rgba(50, 120, 195, 0.5);
+  --bg-primary:#DEBBA4;
   --bg-secondary:#E1F5E8;
   --bg-tertiary:#F6F7EA;
   --bg-footer:rgba(255, 255, 255, 0.95);
@@ -68,6 +68,7 @@ main {
     background-attachment: fixed;
     background-size: cover;
     background-position: bottom;
+    background-color: var(--bg-primary);
     padding-top: 10vh; }
     main #hero h1 {
       font-size: 4.75rem;
@@ -86,7 +87,8 @@ main {
       main #hero h2 #nebulous-text {
         background-color: var(--font-primary);
         color: var(--bg-secondary);
-        border-radius: 2px;
+        border-radius: 5px;
+        padding: 0 5px 4px;
         font-size: .75em; }
     main #hero .btn {
       margin-top: 5vh; }
@@ -398,62 +400,95 @@ main {
 @media screen and (max-width: 51rem) {
   main #hero {
     background-attachment: unset;
-    padding-top: 15vh; } }
-@media screen and (max-width: 51rem) {
-  main #hero h1 {
-    font-size: calc(1rem + 3vh + 2vw); } }
-@media screen and (max-width: 51rem) {
-  main #hero h2 {
-    font-size: 1.6rem; } }
-@media screen and (max-width: 33rem) {
-  main #hero .btn {
-    display: none; } }
-@media screen and (max-width: 51rem) {
+    padding-top: 15vh; }
+    main #hero h1 {
+      font-size: calc(1rem + 3vh + 2vw); }
+    main #hero h2 {
+      font-size: 1.6rem; }
+    main #hero h3 {
+      font-size: 2rem;
+      width: 100%;
+      padding: 0 3vw; }
   main #about h3 {
-    font-size: 2rem;
     width: 100%;
-    padding: 0 3vw; } }
-@media screen and (max-width: 51rem) {
+    text-align: center; }
   main #about .services {
     display: flex;
     flex-direction: column;
-    padding-top: 5vh; } }
-@media screen and (max-width: 51rem) {
-  main #about .services .title {
-    margin-top: 2rem;
-    border-bottom: 2px solid var(--font-primary);
-    padding-right: 2rem;
-    position: relative;
-    cursor: pointer; }
-    main #about .services .title::after {
-      content: "^";
-      position: absolute;
-      right: 0.15rem;
-      font-weight: lighter;
-      line-height: 1em;
-      bottom: 0.25em;
-      transform: rotateZ(180deg);
-      transition: transform var(--half-anim-duration) ease-out; }
-    main #about .services .title.expanded::after {
-      transform: rotate(0deg); } }
-@media screen and (max-width: 51rem) {
-  main #about .services .description {
-    height: 0;
-    overflow: hidden;
-    opacity: 0;
-    transition: scale var(--animation-duration) ease-in, opacity var(--animation-duration) ease-in; }
-    main #about .services .description.expanded {
-      height: 100%;
-      opacity: 1;
-      overflow: visible; } }
+    padding-top: 5vh; }
+    main #about .services .title {
+      margin-top: 2rem;
+      border-bottom: 2px solid var(--font-primary);
+      padding-right: 2rem;
+      position: relative;
+      cursor: pointer; }
+      main #about .services .title::after {
+        content: "^";
+        position: absolute;
+        right: 0.15rem;
+        font-weight: lighter;
+        line-height: 1em;
+        bottom: 0.25em;
+        transform: rotateZ(540deg);
+        transition: transform var(--half-anim-duration) ease-out; }
+      main #about .services .title.expanded::after {
+        transform: rotateZ(0deg); }
+    main #about .services .description {
+      height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: scale var(--animation-duration) ease-in, opacity var(--animation-duration) ease-in; }
+      main #about .services .description.expanded {
+        height: 100%;
+        opacity: 1;
+        overflow: visible; } }
 @media screen and (max-width: 33rem) {
+  main #hero .btn {
+    display: none; }
   main #projects {
     background-attachment: unset;
-    height: 100%; } }
-@media (max-width: 33rem) {
-  main #projects .title {
-    padding-top: 5rem;
-    text-shadow: none; } }
+    height: 100%; }
+    main #projects .title {
+      padding-top: 5rem;
+      text-shadow: none; }
+    main #projects .cards {
+      overflow-x: scroll;
+      position: unset;
+      height: 100%;
+      display: grid;
+      grid-template-rows: 1fr;
+      grid-template-columns: repeat(10, 1fr);
+      column-gap: 1.5rem;
+      padding: 1rem 5vw 5rem;
+      scroll-snap-type: x mandatory; }
+      main #projects .cards .card {
+        position: initial;
+        height: 25rem;
+        width: 16rem;
+        cursor: initial;
+        display: grid;
+        grid-template-rows: 4fr auto 3fr;
+        scroll-snap-align: center;
+        overflow-y: hidden; }
+        main #projects .cards .card .title {
+          padding: 0; }
+          main #projects .cards .card .title svg {
+            display: none; }
+        main #projects .cards .card .project-info {
+          height: 13.9em; }
+          main #projects .cards .card .project-info.terminal-mode .terminal {
+            font-size: 1.1rem; }
+          main #projects .cards .card .project-info .terminal .project-url p {
+            font-size: 0.9rem; }
+        main #projects .cards .card .project-ctas {
+          height: 100%;
+          align-items: center;
+          justify-content: flex-end;
+          padding: 0.5rem 0 0; }
+          main #projects .cards .card .project-ctas .project-info-toggle {
+            padding: 0.4rem 1.2rem; }
+      main #projects .cards .refresh-cards-btn {
+        display: none; } }
 @keyframes rotation {
   0% {
     transform: rotate(0deg) scale(1); }
@@ -461,60 +496,12 @@ main {
     transform: rotate(180deg) scale(0.4); }
   100% {
     transform: rotate(360deg) scale(1); } }
-@media screen and (max-width: 33rem) {
-  main #projects .cards {
-    overflow-x: scroll;
-    position: unset;
-    height: 100%;
-    display: grid;
-    grid-template-rows: 1fr;
-    grid-template-columns: repeat(10, 1fr);
-    column-gap: 1.5rem;
-    padding: 1rem 5vw 5rem;
-    scroll-snap-type: x mandatory; } }
-@media screen and (max-width: 33rem) {
-  main #projects .cards .card {
-    position: initial;
-    height: 25rem;
-    width: 16rem;
-    cursor: initial;
-    display: grid;
-    grid-template-rows: 4fr auto 3fr;
-    scroll-snap-align: center;
-    overflow-y: hidden; } }
-@media screen and (max-width: 33rem) {
-  main #projects .cards .card .title {
-    padding: 0; } }
-@media screen and (max-width: 33rem) {
-  main #projects .cards .card .title svg {
-    display: none; } }
-@media screen and (max-width: 33rem) {
-  main #projects .cards .card .project-info {
-    height: 13.9rem; } }
-@media screen and (max-width: 33rem) {
-  main #projects .cards .card .project-info.terminal-mode .terminal {
-    font-size: 1.1rem; } }
-@media screen and (max-width: 33rem) {
-  main #projects .cards .card .project-info .terminal .project-url p {
-    font-size: 0.9rem; } }
-@media screen and (max-width: 33rem) {
-  main #projects .cards .card .project-ctas {
-    height: 100%;
-    align-items: center;
-    justify-content: flex-end;
-    padding: 0.5rem 0 0; } }
-@media screen and (max-width: 33rem) {
-  main #projects .cards .card .project-ctas .project-info-toggle {
-    padding: 0.4rem 1.2rem; } }
 @media screen and (max-width: 60rem) {
   main #projects .cards .card.sister-jane {
     left: 1rem; } }
 @media screen and (max-width: 100rem) {
   main #projects .cards .card.chaykra {
     right: 3rem; } }
-@media screen and (max-width: 33rem) {
-  main #projects .cards .refresh-cards-btn {
-    display: none; } }
 @media screen and (max-width: 51rem) {
   main #goodbye p {
     font-size: calc(1rem + 2vw + 3.3vh); } }
@@ -585,23 +572,19 @@ footer {
 
 @media screen and (max-width: 51rem) {
   footer {
-    grid-template-columns: 1fr; } }
-@media screen and (max-width: 51rem) {
-  footer div.left-footer {
-    display: none; } }
-@media screen and (max-width: 51rem) {
-  footer div.right-footer {
-    padding: 0 5vw 0 3vw;
-    justify-content: space-between; } }
-@media screen and (max-width: 51rem) {
-  footer div.right-footer .contact {
-    padding: 0 3vw; } }
-@media screen and (max-width: 51rem) {
-  footer div.right-footer .contact a {
-    margin: 0 1vw; }
-    footer div.right-footer .contact a p {
-      line-height: 34px;
-      font-size: 1.25rem; } }
+    grid-template-columns: 1fr; }
+    footer div.left-footer {
+      display: none; }
+    footer div.right-footer {
+      padding: 0 5vw 0 3vw;
+      justify-content: space-between; }
+      footer div.right-footer .contact {
+        padding: 0 3vw; }
+        footer div.right-footer .contact a {
+          margin: 0 1vw; }
+          footer div.right-footer .contact a p {
+            line-height: 34px;
+            font-size: 1.25rem; } }
 @media screen and (min-width: 51.01rem) {
   footer div.right-footer .contact a p {
     position: relative; }
@@ -619,8 +602,7 @@ footer {
       transform: scaleX(1); } }
 @media screen and (max-width: 51rem) {
   footer div.right-footer .contact a .desktop-only {
-    display: none; } }
-@media screen and (max-width: 51rem) {
+    display: none; }
   footer div.right-footer .contact a .mobile-only {
     display: block;
     line-height: 34px;
@@ -629,6 +611,7 @@ footer {
   --font-primary:#C6C6C6;
   --cta:#CAD1AC;
   --bg-footer:#000000;
+  --bg-primary: #030024;
   --bg-secondary:#030024; }
   .dark-mode #projects, .dark-mode #hero {
     background-image: url("./images/bg_dark.png"); }
@@ -638,7 +621,5 @@ footer {
       fill: var(--font-primary); }
   .dark-mode svg.moon path {
     fill: var(--font-primary); }
-
-/*# sourceMappingURL=style.css.map */
 
 /*# sourceMappingURL=style.css.map */
